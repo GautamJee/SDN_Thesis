@@ -1,0 +1,96 @@
+\chapter*{Annexure - B}
+\addcontentsline{toc}{chapter}{Annexure-B}
+
+\section*{Implementation of OpenVSwitch}
+
+\begin{itemize}
+
+    \item Mininet Configuration
+        
+    \begin{itemize}
+    
+        \item Command from mininet installation folder\\
+        \emph{sudo python miniedit.py}
+        
+        \item Select controller type as OpenVSwitch and press Run. The controller will listen for switches to port 6633 on localhost ip address
+            
+    \end{itemize}
+    
+    \item Cbench Configuration
+        
+    \begin{itemize}
+    
+        \item Command from Cbench installation folder\\
+        \emph{./cbench -c localhost -p 6633 -s 16 -M 1 -t}\\
+        to run the Cbench tool against 16 swtiches (-s) with 1 host (-M) per switch in throughput mode (-t) or latency mode (-l)
+        at localhost controller ip (-c) on port 6633 (-p) 
+        
+        
+    \end{itemize}
+    
+\end{itemize}
+
+\section*{Implementation of OpenDayLight}
+
+\begin{itemize}
+    
+    \item Vagrant Machine
+    
+    \begin{itemize}
+    
+        \item Command to boot up vagrant machine from installation folder \\
+        \emph{vagrant up}
+        \item Command to ssh into the vagrant machine\\\emph{vagrant ssh}
+        \item Command to exit from Vagrant ssh \\ \emph{exit}
+        \item Command to gracefully shutdown Vagrant machine \\ \emph{vagrant halt} 
+        
+    \end{itemize}
+    
+    \item WCbench Configuration within Vagrant
+    
+    \begin{itemize}
+    
+        \item Command to start OpenDayLight controller from location "/wcbench"\\ \emph{./wcbench -o}
+        
+        \item Command from location "/wcbench/cbench" to benchmark the controller\\
+        \emph{./cbench -c localhost -s 16 -M 1 -t}\\
+        
+        to run the Cbench tool against 16 swtiches (-s) with 1 host (-M) per switch in throughput mode (-t) or latency mode (-l)
+        at localhost controller IP address (-c)
+        
+        \item Command to stop OpenDayLight from location "/wcbench" \\ 
+        \emph{./wcbench -k}
+        
+    \end{itemize}
+    
+\end{itemize}
+
+\section*{Implementation of Floodlight}
+
+\begin{itemize}
+    
+    \item Floodlight Machine 
+    
+    \begin{itemize}
+    
+        \item Open Virtual Box
+        \item Load and Boot Up Floodlight Image
+        \item Command to start floodlight controller within location "/floodlight"\\
+        \emph{java -jar target/floodlight.jar}
+        \item open separate terminal and run ifconfig to note down IP Address
+        
+    \end{itemize}
+    
+    \item Cbench Configuration
+    
+    \begin{itemize}
+    
+        \item Command from location "/wcbench/cbench" to benchmark the controller\\
+        \emph{./cbench -c (IP Adress of floodlight controller) -p 6653 -s 16 -M 1 -t}\\
+        
+        to run the Cbench tool against 16 swtiches (-s) with 1 host (-M) per switch in throughput mode (-t) or latency mode (-l)
+        at localhost controller IP address (-c)  on port 6653  
+    
+        \end{itemize}
+    
+\end{itemize}

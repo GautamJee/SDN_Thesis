@@ -1,0 +1,35 @@
+\chapter{Literature Survey}
+
+A starter handle of SDN was required to get hypotheses and details that assume significant jobs in the system. The paper underneath was critical for looking for data on the changed networking frameworks that were being used and how a product characterized arrange was distinctive in contrast with the traditional network design.
+
+Published in 2014, the paper ``A survey and a layered taxonomy of software-defined networking'' \cite{taxonomy2014} puts forward a system that classifies published research works and brings to light the proper path to pursue research. The paper described that there is a need to classify and compare SDN Controllers but from a different perspective. Rather than just measuring raw performance, the scenario must be considered in which the operating system ,runs as well as what the network's objective is.
+
+Also, the paper titled `` Software-defined Networking (SDN): a survey ''\cite{benzekki2016survey} and published in 2016, apart from the description about SDN, its controllers and architecture, it provides details about the issues prevailing in adopting SDN by existing networking giants.
+
+Further research was done to understand how to compare different network operating systems. There are many open-source network controllers available. But in order to find the best controller, first, there is a need to establish the meaning of "the best controller" or whether there is any relevance to such a concept.
+
+A paper published in 2014, titled ``Software-Defined Networking: A Comprehensive Survey'' \cite{Survey2014} performed an analysis of the hardware infrastructure used in the software-defined network architecture. The network uses simple switch like devices in place of fully functional routers. While data forwarding elements became dumb, the overall efficiency of network traffic significantly improved as routers were effectively simple programmable packet forwarding devices. The control plane elements are now represented by a single entity called the "Controller" or network operating system. Further third party applications are also allowed to be implemented on top of the network logic with authorization from the controller in order to provide some features specific to the operating system and are much easier to develop and deploy.
+
+In order to compare controllers, first, there is a need for a set of metrics and tools with which the controller's performance can be identified and further classified based on network scenarios.
+
+Published in 2016, the paper ``SDN Controllers: A Comparative Study'' \cite{adaptiveroute2006}  used CBench to test the performance of different controllers. The authors compared controllers based on factors that would yield an overall best performing controller. Their results concluded that controllers coded by the C language gave the highest performance in general along with Java-based distributed controller OpenDaylight.
+
+Published in 2015, the paper ``On the performance of SDN controllers: A reality check'' \cite{realitycheck}  also used CBench to test the throughput and latency of 5 different controllers (Pox, Nox, Ryu, Floodlight, and Beacon). Their results concluded that Beacon has a better performance. Also, they concluded that Ryu is easy to learn and highly accessible.
+
+Published in 2018, the paper ``Performance Analysis of POX and Ryu with Different SDN Topologies’’ shows a comparative study between two python-based controllers and tests them under different network topologies. It concludes that Ryu outperforms Pox in terms of throughput and latency.
+
+Now the measurements that were generally used to look at SDN controllers were comprehended, there is a need to discover appropriate instruments and experiments. The following paper provides information as a part of collecting a choice of tools for our experiment.
+
+Published in 2014, the paper ``Using Mininet for Emulation and Prototyping Software Defined Networks'' \cite{mininet2014} is on the study of SDN controller emulation techniques and tools such as Mininet. Mininet creates a realistic virtual network, running real kernel, switch, and application code, on a single machine (VM, cloud, or native), in seconds, with a single command.
+
+Published in 2018, the paper ``Benchmarking Methodology for Software-Defined Networking (SDN) Controller Performance'' \cite{rfc8456} defines a set of metrics and corresponding methodologies for benchmarking the control-plane performance of Software-Defined Networking (SDN) Controllers.
+
+Published in 2019, the paper titled ``SDN Controllers: Benchmarking \& Performance Evaluation'' \cite{zhu2019sdn} not only show results on comparative performances of various SDN Controllers but also provide a comparative study on various tools like CBench. It also includes the CPU Utilization Analysis, where OFNet is used to send bulk packets.
+
+Published in 2012, the paper ``A Flexible Open-Flow Controller Benchmark’’ \cite{flexible} proposes changes to the OpenFlow protocol as they discovered inherent CPU performance bottlenecks. It also shows how multiple instances of CBench is used to send packets and measure CPU utilization.
+
+Published in 2014, the paper titled ``OFCProbe: A platform-independent tool for OpenFlow controller analysis’’ \cite{ofcprobe} shows both OFCProbe and OFCBench being used as a CPU and RAM utilization monitor and finding bottlenecks for the controller. However, both only works with Ryu, Floodlight, and Nox. It implements the CPU and RAM monitors at the host machine using SMTP messages.
+
+\section*{Summary}
+
+The literature survey involved publications related to either explanation of fundamentals and concepts of software-defined networking, or research indicating different applications of controllers in software-defined networking based on real-world scenarios. Some papers also discussed methods of comparing controllers based on performance and other relevant factors. Different metrics used for controller performance comparison were used, and the relevance of those metrics was also discussed. The survey clarifies that there is a need for a comparison of different controllers. Previous papers mostly published performance results of controllers based on network size, throughput, and latency. Those who published about system utilization only include information about CPU and RAM and excluded information about cache memory, etc. which are also major factors in performance. Furthermore, the tools necessary for sending bulk packets to the controller operating system, such as OFNet, is now a dead project and is not available. OFCBench and OFCProbe use SMTP messages to get data from the controller and are limited to a few Benchmarks, whose data is less accurate.

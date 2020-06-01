@@ -1,0 +1,76 @@
+\documentclass[12pt,twoside]{report}
+% includes
+\usepackage{csquotes}
+\usepackage{titlesec}
+\usepackage{geometry}         % page size
+\usepackage[utf8]{inputenc}     % encoding
+\usepackage{palatino}           % font
+\usepackage[english]{babel}    % language
+\usepackage{graphicx}           % images
+\usepackage{indentfirst}        % indentation
+\usepackage[nottoc]{tocbibind}  % table of contents style
+\usepackage[unicode]{hyperref}  % references from the table of contents
+\usepackage[sorting=none]{biblatex}
+\usepackage{array}
+\newcolumntype{P}[1]{>{\centering\arraybackslash}p{#1}}
+\addbibresource{mybib.bib}
+% includes options
+\geometry{  a4paper,            % scientific thesis standard
+            left=3cm,
+            right=2cm,
+            top=1.5cm,
+            bottom=3cm,
+ }
+\graphicspath{{images/}}        % path where the images are located
+\setlength{\parindent}{1cm}     % paragraph indentation
+
+% other options
+\linespread{1.5}                % space between lines
+\renewcommand*\contentsname{Cuprins}    % table of contents name
+\newcommand{\cchapter}[1]{\chapter[#1]{\centering #1}}
+% the document content
+\usepackage{titlesec}
+\titleformat{\chapter}[display]
+  {\filleft\Huge}
+  {\chaptername\ \thechapter}
+  {3ex}
+  {\bfseries}
+\titlespacing*{\chapter}
+  {0pt}
+  {-15pt}
+  {60pt}
+  
+\begin{document}
+    % macros (global)
+    \input{front/macros}
+    % front-matter
+    \pagenumbering{gobble}
+    \input{front/cover.tex}
+    \input{front/titlepage}
+    % \input{front/recommendation}
+    \clearpage
+    \setcounter{page}{1}
+    \pagenumbering{roman}
+    \input{front/declaration1}
+    \input{front/declaration2}
+    \input{front/abstract}
+    \input{front/acknowledgement}
+    % table of contents
+    \protect\cleardoublepage
+    \tableofcontents
+    \listoffigures
+    \listoftables
+    % chapters
+    \clearpage
+    \setcounter{page}{1}
+    \pagenumbering{arabic}
+    \input{chapters/1introduction}
+    \input{chapters/2literature}
+    \input{chapters/3content}
+    \input{chapters/4expsetup}
+    \input{chapters/5results}
+    \input{chapters/6conclusions}
+    \input{chapters/bibliography}
+    \input{chapters/annexure-A}
+    \input{chapters/annexure-B}    
+\end{document}

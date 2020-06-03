@@ -8,10 +8,6 @@ After having our experiment, as illustrated in the workflow depicted in Fig. \re
 
 \section{CPU Utilization}
 
-Usage of the CPU refers to the use of computing power by a process or the amount of work a CPU performs. Specific tasks require massive CPU time, while others require less because of non-CPU resource requirements. A process is said to be working better if, for the same number of tasks, it utilizes less CPU.
-
-In our result, it shows that RYU continuously utilizes less CPU than POX, depicted in Fig. \ref{CPUutilization} However, it was not such as seen in Fig. \ref{figzhu2019sdn} taken from the paper published in 2018, that depicted for at least fewer time Pox too utilize same as Ryu or even less CPU. \cite{zhu2019sdn}
-
 \begin{figure}[!hbt]
     \centering
         \includegraphics[width=\textwidth,keepaspectratio]{images/cpu_utilization.png}
@@ -19,11 +15,13 @@ In our result, it shows that RYU continuously utilizes less CPU than POX, depict
         \label{CPUutilization}
 \end{figure}
 
+Usage of the CPU refers to the use of computing power by a process or the amount of work a CPU performs. Specific tasks require massive CPU time, while others require less because of non-CPU resource requirements. A process is said to be working better if, for the same number of tasks, it utilizes less CPU.
+
+In our result, it shows that RYU continuously utilizes less CPU than POX, depicted in Fig. \ref{CPUutilization} However, it was not such as seen in Fig. \ref{figzhu2019sdn} taken from the paper published in 2018, that depicted for at least fewer time Pox too utilize same as Ryu or even less CPU. \cite{zhu2019sdn}
+
 \section{Instructions Per Second}
 
 Instructions per Cycle (IPC), generally referred to as clock instructions, are one component of processor performance: the total number of instructions per clock cycle.
-
-With a specific processor, the number of instructions executed per clock is not a constant; it depends on how the individual program running communicates with the processor, and indeed the entire system, particularly the memory hierarchy. Nonetheless, certain cpu characteristics tend to contribute to designs with higher than average IPC values; the inclusion of several arithmetic logic units (an ALU is a cpu module capable of performing basic arithmetic and logical operations); and short pipelines. When evaluating various instruction sets, a simplified instruction set will contribute to a higher IPC number than applying a more complicated instruction set with the same chip technology; furthermore, with less instructions, the more complex instruction set may do more valuable work. 
 
 \begin{figure}[!hbt]
     \centering
@@ -31,6 +29,8 @@ With a specific processor, the number of instructions executed per clock is not 
        \caption{IPC}
         \label{ipc}
 \end{figure}
+
+With a specific processor, the number of instructions executed per clock is not a constant; it depends on how the individual program running communicates with the processor, and indeed the entire system, particularly the memory hierarchy. Nonetheless, certain cpu characteristics tend to contribute to designs with higher than average IPC values; the inclusion of several arithmetic logic units (an ALU is a cpu module capable of performing basic arithmetic and logical operations); and short pipelines. When evaluating various instruction sets, a simplified instruction set will contribute to a higher IPC number than applying a more complicated instruction set with the same chip technology; furthermore, with less instructions, the more complex instruction set may do more valuable work. 
 
 The obtained result is depicted in Fig. \ref{ipc}. The effecient use of pipelining can be seen by both the controllers where both scored IPC values greater than 1. However, Pox in contrast to Ryu has better IPC.
 
@@ -50,8 +50,43 @@ On average both Ryu and Pox relatively has similar clock speed of about a 2GHz. 
 
 \section{L1 Cache Miss Rate}
 
+To improve the cache performance, reducing the miss rate becomes one of the necessary steps among other steps. Decreasing the access time to the cache also gives a boost to its performance.
 
+\begin{figure}[!hbt]
+    \centering
+        \includegraphics[width=\textwidth,keepaspectratio]{images/l1_miss_rate.png}
+       \caption{L1 cache miss rate}
+        \label{l1missrate}
+\end{figure}
+
+From the experiment as depicted in Fig. \ref{l1missrate}, it can be observed that on average both Pox and Ryu has 80\% and 75\% of l1 miss rates respectively. This high miss rate is not enough for any real-time applications. However, during the initiation phase Pox even has the miss rate as high as 90\%.
 
 \section{L2 Cache Miss Rate}
 
+\begin{figure}[!hbt]
+    \centering
+        \includegraphics[width=\textwidth,keepaspectratio]{images/l2_miss_rate.png}
+       \caption{L2 cache miss rate}
+        \label{l2missrate}
+\end{figure}
+
+For level-2 cache the miss rates are quite less than as compared to level-1 cache. The L2 miss rates for Ryu and Pox is observed to be below 40\%. However, in reference to real-time applications that needs to run 24*7 less than the observed.
+
 \section{Branch Misprediction}
+
+Branch Predictions are an architectural innovation that provides an alternative to conditional control transfers, enforced by computer commands, such as conditional branch, conditional call, tentative return and tables for branches. Predication operates by implementing instructions from both branch directions, enabling only specific instructions from the direction taken to change architectural condition.
+
+\begin{figure}[!hbt]
+    \centering
+        \includegraphics[width=\textwidth,keepaspectratio]{images/branch_mispredicted.png}
+       \caption{Branch Misprediction Rate}
+        \label{branchmisprediction}
+\end{figure}
+
+The branch predictor's aim is to boost flow inside the instruction pipeline. In several modern pipelined microprocessor architectures such as x86, branch predictors play a critical role in achieving highly effective performance. Predictor latency can also have
+a profound impact on efficiency. Branch Misprediction Rate is the ratio that indicates the rate of mispredicted branches.
+
+When there is a high rate of branch misprediction, an optimization (minimization) problem is used where the
+emphasis is on achieving the lowest possible miss rate , low power consumption and low resource complexity. 
+
+As shown in Fig. \ref{branchmisprediction}, the result clearly shows, for both Ryu and Pox, this rate is quite low ie. below 5\%. Also, during initailization time (first 10 - 15 secs), Pox has this rate significantly lesser than Ryu. However, overall on average, Ryu has about 22\% less misrprediction rates than Pox.

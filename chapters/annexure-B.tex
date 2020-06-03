@@ -93,4 +93,16 @@
     
         \end{itemize}
     
+    \item Perf Usage
+    
+    \begin{itemize}
+    
+        \item Syntax\\
+        \emph{sudo perf stat -e <events list> } \\
+    \end{itemize}
+    
+    \begin{itemize}
+        \item Example\\
+        \emph{sudo perf stat -e task-clock,br\_misp\_retired.conditional,branch-instructions,branch-misses,l2\_rqsts.miss,l2\_rqsts.references,bus-cycles,cache-references,cpu-cycles,instructions  sleep 30 14880,14883,14882,14884}\\
+    \end{itemize}
 \end{itemize}

@@ -1,20 +1,20 @@
 \chapter{Experimental Setup}
-Two open-source controllers operating systems were compared. Ryu and Pox are installed on a server machine. In contrast, Mininet and CBench are installed on two different host machines in the following hardware and software configurations.
+Two open-source controllers operating systems were compared. Ryu and Pox are installed on a server machine. Conversely, Mininet and CBench are introduced on two distinctive host machines in the accompanying equipment and programming arrangements.
 
  \begin{table}[!hbt]
     \centering
-    \caption{Features of Pox and Ryu}
-    \begin{tabular}{|p{5cm}|p{5cm}|p{5cm}|}
+    \caption{Features of Pox and Ryu \cite{ryuandpox}}
+    \begin{tabular}{|p{4cm}|p{4cm}|p{4cm}|}
     \hline
          \textbf{Features} & \textbf{Pox} & \textbf{Ryu} \\ \hline
-         OpenFlow Version & v1.0 & v1.0, v1.2, v1.3, v1.4, v1.5, Niciria extensions \\ \hline
-         GUI & Yes & Yes \\ \hline
-         REST API & Yes & Yes \\ \hline
          Platform Support & Windows, Linux, Mac & Linux \\ \hline
-    License Provider & Apache & Apache \\ \hline
-    Learning Curve & Easy & Moderate \\ \hline
-    Distributed Support & No & Yes \\ \hline
     Last Updated & Nov 2017 & May 2020 \\ \hline
+    License Provider & Apache & Apache \\ \hline
+    Distributed Support & No & Yes \\ \hline
+         Learning Curve & Easy & Moderate \\ \hline
+         GUI & Yes & Yes \\ \hline
+    REST API & Yes & Yes \\ \hline
+    OpenFlow Version & v1.0 & v1.0 to v1.5, Niciria extensions \\ \hline
     \end{tabular}
     \label{RyuvsPox}
     \end{table}
@@ -39,7 +39,7 @@ Two open-source controllers operating systems were compared. Ryu and Pox are ins
     \label{Hardware}
     \end{table}
 
-The configurations, as mentioned above, were not voluntarily chosen; rather, it was the resource restrictions during the project's time. Nevertheless, these configurations could be further modified based on repeated tests. So, even the worst-performing controller is best considering the limited processing power and RAM.
+The setups, as referenced above, were not deliberately picked; rather, it was the asset limitations during the task's time. All things considered, these designs could be additionally changed dependent on rehashed tests. Thus, even the most exceedingly terrible performing controller is best considering the constrained preparing force and RAM.
 
 \section{Software \& Tools}
 The controller is run on a Linux Ubuntu Server 18.04 LTS OS so that it got dedicated RAM and processor cores \cite{resshare1970}, and 5 out of 8 cores were isolated for the controller using \textit{isolcpus} tool.
@@ -50,7 +50,7 @@ Oracle VM VirtualBox is installed on two separate host machines. An instance of 
 
 Mininet is installed on the Host OS and is used to set the hosts, switches, controllers, and set any possible combinations of connections.
 
-CBench tool emulates a set of switches and hosts per switch and connects to the SDN controller specified. Usually, it generates packets in the network and measures the performance of the controller in 2 modes
+CBench device copies a lot of switches and hosts per switch and interfaces with the SDN controller indicated. Generally, it creates them in the network and measures the presentation of the controller in 2 modes.
     \begin{itemize}
         \item Latency Mode: Packets in these events come in bulk from each switch.
         \item Throughput Mode: Packets in events come in sequential order.
@@ -72,6 +72,6 @@ CBench tool emulates a set of switches and hosts per switch and connects to the 
 
 However, in our case, we took the usage of CBench in throughput mode and generated massive traffic for the controller.
 
-The overall experimental setup can be viewed as in Fig. \ref{experimentalsetup}
+The overall experimental setup can be viewed as in Fig. \ref{experimentalsetup}. The Ryu and Pox along with perf, are installed on server machine, and whenever they are run, were run on isolated cores. In the experiment, 6 isolated cores are assigned for Pox. In one of the isolated core, perf is allowed to run. In the experiment, there are 2 hosts / client machines used. These two machines was set to send traffic to the server where controller is running. In both of the hosts, CBench is installed, and further Mininet is installed on a separate virtual machine in the system.
 
-The experiment is carried on as the per the workflow, depicted in the Fig. \ref{workflowexperiment}
+The experiment is carried on as the per the workflow, depicted in the Fig. \ref{workflowexperiment}. The controller is allowed run on isolated cores. Then the CBench and Mininet is allowed to send random packets to the running controller from other two remote machines. Perf tool is run to record the cores where controller is running for specified time and later stopped. This is done for both Ryu and Pox, and a number of times (here 5 times) to get relatively more accurate information. The information collected is further displayed in graphical chart using Google Chart.
